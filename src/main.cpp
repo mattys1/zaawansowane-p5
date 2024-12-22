@@ -51,7 +51,12 @@ double getPi(const long steps, const size_t threads) {
 	return sum * 4;
 }
 
-void generateBenchmarks() {
+void generateBenchmarks(
+	const size_t minThreads,
+	const size_t maxThreads,
+	const size_t minIter,
+	const size_t maxIter
+) {
 	std::ofstream output;
 	output.open("benchmark.csv", std::ios::trunc | std::ios::out);
 	
@@ -62,12 +67,12 @@ void generateBenchmarks() {
 
 	output << "Threads;Iterations;Calculated;Time[µs]" << std::endl;
 
-	for(auto threads {1}; threads <= 50; threads++) {
+	for(auto threads {minThreads}; threads <= maxThreads; threads++) {
 		size_t multiplier {10};
 
 		for(
-			size_t iterations {1};
-			iterations <= 5'000'000'000;
+			size_t iterations {minIter};
+			iterations <= maxIter;
 			iterations >= 1'000'000'000 ? iterations += 1'000'000'000 : iterations *= multiplier
 		) {
 			std::println("Benchmarking with {} threads and {} iterations.", threads, iterations);
@@ -88,5 +93,5 @@ void generateBenchmarks() {
 }
 
 int main(int argc, char *argv[]) {
-	generateBenchmarks();
+	generateBenchmarks(12, 50, 1, 1'000'000'000);
 }
