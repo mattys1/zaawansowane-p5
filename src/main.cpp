@@ -11,6 +11,7 @@ double getPi(const double deltax, const size_t threads) {
 	};
 
 	std::vector<std::thread> threadPool;
+	threadPool.reserve(threads);
 
 	for(int i = 0; i < threads; i++) {
 		threadPool.push_back(std::thread(calculate));
