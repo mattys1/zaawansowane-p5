@@ -1,8 +1,10 @@
 #include <cassert>
 #include <cmath>
+#include <iostream>
 #include <thread>
 #include <print>
 #include <vector>
+#include <fstream>
 
 double getPi(const long steps, const size_t threads) {
 	long double deltax { 1. / steps };
@@ -49,8 +51,42 @@ double getPi(const long steps, const size_t threads) {
 	return sum * 4;
 }
 
-int main(int argc, char *argv[]) {
-	auto pi { getPi(1'000'000, 12) };
+void generateBenchmarks() {
+	std::ofstream output;
+	output.open("benchmark.csv", std::ios::trunc | std::ios::out);
+	
+	if(!output.is_open()) {
+		std::cerr << "Couldn't open benchmark file";
+		return;
+	}
 
-	std::println("PI = {}", pi);
+	output << "Threads;Iterations;Calculated;Time[µs]" << std::endl;
+
+	for(auto threads {1}; threads <= 50; threads++) {
+		size_t multiplier {10};
+
+		for(
+			size_t iterations {1};
+			iterations <= 5'000'000'000;
+			iterations >= 1'000'000'000 ? iterations += 1'000'000'000 : iterations *= multiplier
+		) {
+			std::println("Benchmarking with {} threads and {} iterations.", threads, iterations);
+
+			auto benchmarkStart { std::chrono::high_resolution_clock::now() };
+			auto calculated = getPi(iterations, threads);
+			auto benchmarkStop { std::chrono::high_resolution_clock::now() };
+
+			auto benchmarkDuration = std::chrono::duration_cast<std::chrono::microseconds>(
+				benchmarkStop - benchmarkStart
+			);
+
+			output << std::format("{};{};{};{}", threads, iterations, calculated, benchmarkDuration.count()) << std::endl;
+
+			/* multiplier *= 10; */
+		}
+	}
+}
+
+int main(int argc, char *argv[]) {
+	generateBenchmarks();
 }
