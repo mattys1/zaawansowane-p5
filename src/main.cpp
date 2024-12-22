@@ -21,8 +21,6 @@ double getPi(const long steps, const size_t threads) {
 		
 	auto calculate = [&](const long double start, const long double end) {
 		long double localSum = 0.;
-		std::println("Start: {}", start);
-		std::println("End: {}", end);
 		for(long double i {start}; i < end; i+= deltax) {
 			localSum += sqrt(1 - i * i) * deltax;
 		} 
