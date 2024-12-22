@@ -4,7 +4,9 @@
 #include <print>
 #include <vector>
 
-double getPi(const double deltax, const size_t threads) {
+double getPi(const long steps, const size_t threads) {
+	long double deltax { 1. / steps };
+
 	if(deltax > 1) {
 		std::println("Rectangle width should be smaller than 1");
 		return -1;
@@ -18,11 +20,14 @@ double getPi(const double deltax, const size_t threads) {
 	double sum = 0.;
 		
 	auto calculate = [&](const long double start, const long double end) {
+		long double localSum = 0.;
 		std::println("Start: {}", start);
 		std::println("End: {}", end);
 		for(long double i {start}; i < end; i+= deltax) {
-			sum += sqrt(1 - i * i) * deltax;
+			localSum += sqrt(1 - i * i) * deltax;
 		} 
+
+		sum += localSum;
 	};
 
 	std::vector<std::thread> threadPool;
@@ -47,7 +52,7 @@ double getPi(const double deltax, const size_t threads) {
 }
 
 int main(int argc, char *argv[]) {
-	auto pi { getPi(0.0001, 10) };
+	auto pi { getPi(1'000'000, 12) };
 
 	std::println("PI = {}", pi);
 }
