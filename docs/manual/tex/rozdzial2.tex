@@ -1,0 +1,101 @@
+\newpage
+\section{Analiza problemu}		%2
+%Napisać gdzie używa się tego algorytmu
+%Opisać sposób działania programu/algorytmu
+%Napisać spsoób wykorzystania algorytmu po przez wykonanie przykładu (np. mnożenie macierzy - wykonać ręcznie przykład z mnożeniem macierzy pokazujący jak mnoży się macierz ręcznie)
+%Jeśli zadanie zakłada przedstawienie jakiegoś narzędzia (np. git, AI) należy opisać narzędzie
+
+\subsection{Macierz}
+
+Macierz\cite{matrixwiki} jest dwu wymiarową tablicą elementów, reprezentującą odpowiednio ułożony zbiór wartości. Macierze często używane są w matematyce, fizyce i oczywiście informatyce, ze względu na fakt, że można na nich wykonywać różne operacje matematyczne. 
+
+\begin{figure}[H]
+	\begin{center}
+		\[
+		\begin{bmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9
+		\end{bmatrix}
+		\]
+	\end{center}
+	\caption{Przykładowa macierz}
+	\label{fig:matrix_example}
+\end{figure}
+
+Na rys. \ref{fig:matrix_example} jest pokazana przykładowa macierz.
+
+\subsection{Git}
+Kolejnym konceptem, którym zajmuje się projekt jest narzędzie git\cite{gitsite}. Pozwala ono zarządzać poszczególnymi wersjami projektów. Głównym korzeniem gita jest system commitów, czyli zapisania zmian w pliku w stosunku do commita starszego. To, w połączeniu z jego innymi możliwościami pozwala na tworzenie długich i skomplikowanych osi czasu danych projektów. 
+
+Użycie gita można zademonstrować na prostym przykładzie. Tworzymy katalog a w nim repozytorium, uzywając komendy \texttt{git init}, jak widać na rys. \ref{fig:git_init}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/git_init.png}
+	\caption{\centering{Puste repozytorium git}}
+	\label{fig:git_init}
+\end{figure}
+
+Stwórzmy jakiś plik i dodajmy go do repozytorium. Plik można dodać do repozytorium komendą \texttt{git add}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/git_add.png}
+	\caption{\centering{Stworznie pliku w repozytorium}}
+	\label{fig:git_add}
+\end{figure}
+
+Następnie należy scommitować zmiany. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/git_commit1.png}
+	\caption{\centering{Commit nr. 1}}
+	\label{fig:git_commit1}
+\end{figure}
+
+Na rysunku \ref{fig:git_commit1} użyta komenda \texttt{git commit} commituje wszystkie dodane pliki (\texttt{-a}) z jakimś komunikatem (\texttt{-m}).  
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/git_commit2.png}
+	\caption{\centering{Commit nr. 2}}
+	\label{fig:git_commit2}
+\end{figure}
+
+Na rys. \ref{fig:git_commit2}, został utworzony kolejny commit, dodajacy zmiany do \texttt{plik.txt}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/git_log.png}
+	\caption{\centering{Log gita}}
+	\label{fig:git_log}
+\end{figure}
+
+Jak na rys. \ref{fig:git_log} jest pokazane, używając komendy \texttt{git log}, można wyświetlić log commitów w repozytorium.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/git_checkout.png}
+	\caption{\centering{Demonstracja checkout}}
+	\label{fig:git_checkout}
+\end{figure}
+
+Jak widać na rys. \ref{fig:git_checkout}, komenda \texttt{git checkout}, pozwala na przejście repozytorium w inny stan, w tym przypadku przechodzi się do commita o danym ID, pokazanym na rys. \ref{fig:git_log}. Jako, że jest to pierwszy commit, nie ma w nim zmian z drugiego.
+
+\subsection{Doxygen}
+Doxygen\cite{doxygensite} jest narzędziem automatycznie generującym dokumentację programu z komentarzy w kodzie źródłowym. Potrafi on generować strony HTML, gdzie można dynamicznie nawigować się miedzy rożnymi częściami kodu oraz pliki \LaTeX, które można konwertować na różne, statyczne formaty.
+
+\subsection{Github Copilot}
+
+GitHub Copilot\cite{copilotsite} to model \texttt{LLM} oferowany przez GitHub - może on analizować kod źródłowy i funkcjonować jako zaawansowany autocompleter lub asystent potrafiący tworzyć proste fragmenty. Jest on bezpośrednio zintegrowany z wieloma narzędziami Microsoftu, takimi jak Visual Studio Code czy zwykłe Visual Studio. Jednak, jest on dostępny również jako rozszerzenie do innych edytorów, jak Neovim, którego instalacja przy użyciu menagera pluginów \texttt{Lazygit} jest ukazana na rys. \ref{fig:copilot_install}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{images/copilot-plugin.png}
+	\caption{\centering{Plik instalacyjny Plugina Copilot}}
+	\label{fig:copilot_install}
+\end{figure}
+
+W Visual Studio jest on zainstalowany domyślnie.

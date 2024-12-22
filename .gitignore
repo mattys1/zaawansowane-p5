@@ -1,0 +1,6 @@
+build/
+out/
+.cache/
+# docs/html/
+# docs/latex/
+/.vs
