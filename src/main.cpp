@@ -2,7 +2,7 @@
 #include <print>
 #include <vector>
 
-double getPi(const double deltax, const int threads) {
+double getPi(const double deltax, const size_t threads) {
 	double test = 0.;
 
 	auto calculate = [&]() -> double {
