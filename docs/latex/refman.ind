@@ -1,123 +1,22 @@
 \begin{theindex}
 
-  \item {alokuj}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{8}
+  \item {/home/mattys/skrypty-\/i-\/syfy/studia/rok2/programowanie-\/zaawansowane/p5/src/main.cpp}, 
+		\hyperpage{3}
 
   \indexspace
 
-  \item {diagonalna}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{8}
-  \item {diagonalna\_k}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{8}
-  \item {dowroc}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{9}
-
-  \indexspace
-
-  \item {kolumna}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{9}
-
-  \indexspace
-
-  \item {losuj}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{9, 10}
+  \item {generateBenchmarks}
+    \subitem {main.cpp}, \hyperpage{3}
+  \item {getPi}
+    \subitem {main.cpp}, \hyperpage{4}
 
   \indexspace
 
   \item {main}
-    \subitem {main.cpp}, \hyperpage{19}
+    \subitem {main.cpp}, \hyperpage{4}
   \item {main.cpp}
-    \subitem {main}, \hyperpage{19}
-  \item {Matrix}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{7}
-  \item {Matrix$<$ T $>$}, \hyperpage{5}
-    \subitem {alokuj}, \hyperpage{8}
-    \subitem {diagonalna}, \hyperpage{8}
-    \subitem {diagonalna\_k}, \hyperpage{8}
-    \subitem {dowroc}, \hyperpage{9}
-    \subitem {kolumna}, \hyperpage{9}
-    \subitem {losuj}, \hyperpage{9, 10}
-    \subitem {Matrix}, \hyperpage{7}
-    \subitem {nad\_przekatna}, \hyperpage{10}
-    \subitem {operator$<$}, \hyperpage{14}
-    \subitem {operator$<$$<$}, \hyperpage{18}
-    \subitem {operator$>$}, \hyperpage{14}
-    \subitem {operator()}, \hyperpage{10}
-    \subitem {operator+}, \hyperpage{11, 12}, \hyperpage{17}
-    \subitem {operator++}, \hyperpage{12}
-    \subitem {operator+=}, \hyperpage{12}
-    \subitem {operator-\/}, \hyperpage{13}, \hyperpage{17}
-    \subitem {operator-\/-\/}, \hyperpage{13}
-    \subitem {operator-\/=}, \hyperpage{13}
-    \subitem {operator==}, \hyperpage{14}
-    \subitem {operator\texorpdfstring{$\ast$}{*}}, \hyperpage{10, 11}, 
-		\hyperpage{17}
-    \subitem {operator\texorpdfstring{$\ast$}{*}=}, \hyperpage{11}
-    \subitem {pod\_przekatna}, \hyperpage{15}
-    \subitem {pokaz}, \hyperpage{15}
-    \subitem {przekatna}, \hyperpage{15}
-    \subitem {szachownica}, \hyperpage{15}
-    \subitem {wiersz}, \hyperpage{16}
-    \subitem {wstaw}, \hyperpage{16}
-    \subitem {wypisz}, \hyperpage{16}
-
-  \indexspace
-
-  \item {nad\_przekatna}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{10}
-
-  \indexspace
-
-  \item {operator$<$}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{14}
-  \item {operator$<$$<$}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{18}
-  \item {operator$>$}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{14}
-  \item {operator()}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{10}
-  \item {operator+}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{11, 12}, \hyperpage{17}
-  \item {operator++}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{12}
-  \item {operator+=}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{12}
-  \item {operator-\/}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{13}, \hyperpage{17}
-  \item {operator-\/-\/}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{13}
-  \item {operator-\/=}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{13}
-  \item {operator==}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{14}
-  \item {operator\texorpdfstring{$\ast$}{*}}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{10, 11}, \hyperpage{17}
-  \item {operator\texorpdfstring{$\ast$}{*}=}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{11}
-
-  \indexspace
-
-  \item {pod\_przekatna}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{15}
-  \item {pokaz}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{15}
-  \item {przekatna}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{15}
-
-  \indexspace
-
-  \item {src/main.cpp}, \hyperpage{19}
-  \item {src/Matrix.hpp}, \hyperpage{19, 20}
-  \item {szachownica}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{15}
-
-  \indexspace
-
-  \item {wiersz}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{16}
-  \item {wstaw}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{16}
-  \item {wypisz}
-    \subitem {Matrix$<$ T $>$}, \hyperpage{16}
+    \subitem {generateBenchmarks}, \hyperpage{3}
+    \subitem {getPi}, \hyperpage{4}
+    \subitem {main}, \hyperpage{4}
 
 \end{theindex}
