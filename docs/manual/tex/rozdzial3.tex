@@ -5,10 +5,9 @@
 %Narysować graf, UML, diagram klas, schemat działania algorytmu
 %Jeśli zadanie zakłada przedstawienie jakiegoś narzędzia (np. git, AI) należy opisać sposób jego używania
 
-\subsection{Implementacja macierzy}
+\subsection{Implementacja Algorytmu}
 
-
-Do zaimplementowania Macierzy zostanie użyty Język \texttt{C++} z kompilatorem \texttt{g++} oraz \texttt{MSVC}. Wersja standardu \texttt{C++} to \texttt{C++23}. Jako, że projekt ma być rozdzielony na dwa pliki, zostanie zastosowany \texttt{CMake} w celu automatyzacji procesu budowania. \texttt{CMake} pozwala na generowanie plików budujących dany projekt, zgodnie z określoną konfiguracją. Oszczędza to programiście, szczególnie przy większych projektach, manualne pisanie Makefileów.
+Do zaimplementowania Algorytmu obliczania $\pi$ zostanie użyty Język \texttt{C++} z kompilatorem \texttt{g++}. Wersja standardu \texttt{C++} to \texttt{C++23}. Systemem budowy projektu będzie \texttt{CMake}, pomagający w konfiguracji wersji kompilatora czy bibliotek. \texttt{CMake} pozwala na generowanie plików budujących dany projekt, zgodnie z określoną konfiguracją. Oszczędza to programiście, szczególnie przy większych projektach, manualne pisanie Makefileów.
 Plik konfiguracyjny \texttt{CMakeLists.txt} może wyglądać jak na rysunku
 
 \begin{lstlisting}[caption=Plik konfiguracyjny CMake, label={lst:cmakelists}, language=C++]
@@ -27,7 +26,7 @@ Plik konfiguracyjny \texttt{CMakeLists.txt} może wyglądać jak na rysunku
 	
 \end{lstlisting}
 
-Edytorem będzie program Neovim oraz Visual Studio 2022 Community Edition. Jest to terminalowy edytor tekstu z możliwością poszerzenia funkcjonalności przy użyciu wszelkiego rodzaju pluginów. Wybrany został, dlatego że jest on już skonfigurowany na moim komputerze zgodnie z moimi preferencjami. Visual Studio jest zintegrowanym środowiskiem deweloperskim stworzonym i rozwijanym przez firmę Microsoft.
+Edytorem będzie program Neovim. Jest to terminalowy edytor tekstu z możliwością poszerzenia funkcjonalności przy użyciu wszelkiego rodzaju pluginów. Wybrany został, dlatego że jest on już skonfigurowany na moim komputerze zgodnie z moimi preferencjami.
 
 \subsection{Git}
 
@@ -45,7 +44,7 @@ Konfiguracja dla Doxygena jest wygenerowana przy użyciu programu doxywizard, po
 \end{figure}
 
 \subsection{Github Copilot}
-Do napisania programu do pomocy został wykorzystany Github Copilot. Z pomocy kopilota można skorzystać na 3 sposoby. Sposób pierwszy - poprzez podpowiedzi generowane przez copilota które są oznaczone kolorem szarym, co pokazano na rysunku nr \ref{fig:copilotsuggestion}.
+Do napisania programu do pomocy został wykorzystany Github Copilot. Z pomocy Copilota można skorzystać na 3 sposoby. Sposób pierwszy - poprzez podpowiedzi generowane przez Copilota które są oznaczone kolorem szarym, co pokazano na rysunku nr \ref{fig:copilotsuggestion}.
 
 \begin{figure}[H]
 	\centering
