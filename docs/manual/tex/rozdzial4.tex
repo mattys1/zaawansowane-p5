@@ -53,4 +53,56 @@ double getPi(const size_t steps, const size_t threads) {
 }                                                                                    
 \end{lstlisting}
 
-Na linijce nr.~1 zawarta jest deklaracja funkcji \texttt{getPi()}. Parametr \texttt{steps} określa gęstość prostokątów w ćwiartce, czyli dokładność obliczeń. Parametr \texttt{threads} natomiast, określa liczbę wątków jaka ma być używana podczas działania algorytmu. W linijce nr.~2, parametr \texttt{deltax} to szerokość poszczególnego prostokąta. W linijce nr.~4 i nr.~9 sprawdzana jest poprawność parametrów. W linijce nr.~14 zadeklarowana jest zmienna \texttt{sum}, która ma przechowywać sumę pól prostokątów. W linijce nr.~16 zadeklarowana jest funkcja lambda \texttt{calculate()}, która oblicza sumę pól prostokątów dla danego przedziału. Przedział określony jest przez parametry \texttt{start} i \texttt{end}. Na końcu lambdy, po zsumowaniu pól zmienna \texttt{localSum} dodawana jest do zmiennej \texttt{sum} zbieranej przez referencję. Od linijek nr.~25-34 tworzony jest wektor \texttt{threadPool} i wypełniany jest on wątkami, które po stworzeniu wywołują lambdę \texttt{calculate()}. Na końcu, w linijkach nr.~38-40, czekamy na zakończenie wszystkich wątków przy użyciu metody \texttt{.join()}. Blokuje ona główny wątek aż wykonywanie odpowiedniego wątku się nie zakończy. Na końcu, zwracamy $4 \times \texttt{sum}$, czyli pole, a dlatego że przyjęte jest, że $r = 1$, jest to $\pi$.
+Na linijce nr.~1 zawarta jest deklaracja funkcji \texttt{getPi()}. Parametr \texttt{steps} określa gęstość prostokątów w ćwiartce, czyli dokładność obliczeń. Parametr \texttt{threads} natomiast, określa liczbę wątków jaka ma być używana podczas działania algorytmu. W linijce nr.~2, parametr \texttt{deltax} to szerokość poszczególnego prostokąta. W linijce nr.~4 i nr.~9 sprawdzana jest poprawność parametrów. W linijce nr.~14 zadeklarowana jest zmienna \texttt{sum}, która ma przechowywać sumę pól prostokątów. W linijce nr.~16 zadeklarowana jest funkcja lambda \texttt{calculate()}, która oblicza sumę pól prostokątów dla danego przedziału. Przedział określony jest przez parametry \texttt{start} i \texttt{end}. Na końcu lambdy, po zsumowaniu pól zmienna \texttt{localSum} dodawana jest do zmiennej \texttt{sum} zbieranej przez referencję. Od linijek nr.~25-34 tworzony jest wektor \texttt{threadPool} i wypełniany jest on wątkami, które po stworzeniu wywołują lambdę \texttt{calculate()}. Na końcu, w linijkach nr.~38-40, czekamy na zakończenie wszystkich wątków przy użyciu metody \texttt{.join()}. Blokuje ona główny wątek, aż wykonywanie odpowiedniego wątku się nie zakończy. Na końcu, zwracamy $4 \times \texttt{sum}$, czyli pole, a dlatego że przyjęte jest, że $r = 1$, jest to $\pi$.
+
+\subsection{Implementacja kodu benchmarkującego}
+
+Funkcja ta też znajduje się w pliku \texttt{main.cpp}. Celem jest generowanie pliku \texttt{.csv} z wynikami benchmarków.
+
+\begin{lstlisting}[caption=Funkcja \texttt{generateBenchmarks()}, label={lst:generatebenchmarks}, language=C++,literate={µ}{$\upmu$}1]
+void generateBenchmarks(
+	const size_t minThreads,
+	const size_t maxThreads,
+	const size_t minIter,
+	const size_t maxIter
+) {
+	std::ofstream output;
+	output.open("benchmark.csv", std::ios::trunc | std::ios::out);
+	
+	if(!output.is_open()) {
+		std::cerr << "Couldn't open benchmark file";
+		return;
+	}
+
+	output << "Threads;Iterations;Calculated;Time[µs]" << std::endl;
+
+	for(auto threads {minThreads}; threads <= maxThreads; threads++) {
+		size_t multiplier {10};
+
+		for(
+			size_t iterations {minIter};
+			iterations <= maxIter;
+			iterations >= 1'000'000'000 ? iterations += 1'000'000'000 : iterations *= multiplier
+		) {
+			std::println("Benchmarking with {} threads and {} iterations.", threads, iterations);
+
+			auto benchmarkStart { std::chrono::high_resolution_clock::now() };
+			auto calculated = getPi(iterations, threads);
+			auto benchmarkStop { std::chrono::high_resolution_clock::now() };
+
+			auto benchmarkDuration = std::chrono::duration_cast<std::chrono::microseconds>(
+				benchmarkStop - benchmarkStart
+			);
+
+			output << std::format("{};{};{};{}", threads, iterations, calculated, benchmarkDuration.count()) << std::endl;
+		}
+	}
+}
+\end{lstlisting}
+% minThreads,
+% maxThreads,
+% minIter,   
+% maxIter    
+Jak widać na listingu nr.~\ref{lst:generatebenchmarks}, na linijkach nr.~1-6 funkcja przyjmuje parametry \texttt{minThreads}, określający minimalną liczbę wątków, \texttt{maxThreads}, określający maksymalną liczbę wątków, \texttt{minIter}, określający minimalną liczbę iteracji, \texttt{maxIter}, określający maksymalną liczbę iteracji. Na linijkach nr.~8-14 otwieramy plik \texttt{benchmark.csv} do zapisu. Jest to plik \texttt{.csv} ze strukturą \texttt{Threads;Iterations;Calculated;Time[µs]}. \texttt{Theads} określa liczbę wątków używaną podczas testu, \texttt{Iterations} liczbę iteracji, \texttt{Calculated} to wartość wykalkulowanej liczby $\pi$, a \texttt{Time[µs]}. 
+
+Na linijce nr.~17, zewnętrzna pętla \texttt{for} powtarza się \texttt{maxThreads - minThreads} razy. To dlatego, że chcemy uzyskać pomiary dla wszystkich ilości wątków w danym przedziale. Zadeklarowana na linijce nr.~18 zmienna \texttt{multiplier} określa jak szybko należy zmieniać liczbę iteracji w funkcji \texttt{getPi()}. Mniejsze wartości \texttt{multiplier} pozwalają na większą dokładność, kosztem czasu wykonywania benchmarków. Na linijce nr.~20, wewnętrzna pętla \texttt{for} manipuluje ilością iteracji jaka ma być wykonywana. Maksymalnie może być to \texttt{maxIter} razy i minimalnie \texttt{minIter}, ale licznik \texttt{iterations} przy każdej iteracji jest mnożony razy 10 oraz jeżeli jest większy niż \texttt{1'000'000'000}, to dodawane jest \texttt{1'000'000'000}, ku celu oszczędzenia czasu. Następnie, przy użyciu biblioteki \texttt{std::chrono} mierzony jest czas przed i po wykonaniu funkcji oraz zapisywany jest czas trwania. Na linijce nr.~35 zapisywane są wyniki do pliku. 
