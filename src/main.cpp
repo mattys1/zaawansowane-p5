@@ -13,7 +13,7 @@
 * @param threads Liczba wątków do użycia w obliczeniach.                             
 * @return Obliczona wartość liczby Pi lub -1 w przypadku błędu.                      
 */                                                                                   
-double getPi(const long steps, const size_t threads) {                               
+double getPi(const size_t steps, const size_t threads) {                               
 	long double deltax { 1. / steps };                                               
                                                                                      
 	if(deltax > 1) {                                                                 
@@ -110,5 +110,17 @@ void generateBenchmarks(
 }
 
 int main(int argc, char *argv[]) {
-	generateBenchmarks(1, 50, 1, 1'000'000'000);
+	/* generateBenchmarks(1, 50, 1, 1'000'000'000); */
+
+	size_t steps {};
+	std::print("Select the accuracy of the algorithm (rectangles in a quarter of the circle): "); std::cin >> steps;
+
+	std::println();
+
+	size_t threads {};
+	std::print("Select the number of threads to use: "); std::cin >> threads;
+
+	std::println();
+
+	std::println("Calculated Pi: {}", getPi(steps, threads));
 }
