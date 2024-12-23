@@ -6,68 +6,68 @@
 #include <vector>
 #include <fstream>
 
-/**
-* @brief Oblicza wartoøø liczby Pi metodø†przybliøonej†caøki uøywajøc okreølonej liczby krokÛw i wøtkÛw.
-* 
-* @param steps Liczba krokÛw do uøycia w obliczeniach.
-* @param threads Liczba wøtkÛw do uøycia w obliczeniach.
-* @return Obliczona wartoøø liczby Pi lub -1 w przypadku bøødu.
-*/
-double getPi(const long steps, const size_t threads) {
-	long double deltax { 1. / steps };
-
-	if(deltax > 1) {
-		std::println("Rectangle width should be smaller than 1");
-		return -1;
-	}
-
-	if(threads == 0) {
-		std::println("Threads should be a non-zero value");
-		return -1;
-	}
-
-	double sum = 0.;
-		
-	auto calculate = [&](const long double start, const long double end) {
-		long double localSum = 0.;
-		for(long double i {start}; i < end; i+= deltax) {
-			localSum += sqrt(1 - i * i) * deltax;
-		} 
-
-		sum += localSum;
-	};
-
-	std::vector<std::thread> threadPool;
-	threadPool.reserve(threads);
-
-	for(int i = 0; i < threads; i++) {
-		threadPool.push_back(std::thread([&, i] {
-			calculate(
-				(1. / static_cast<double>(threads)) * i,
-				(1. / static_cast<double>(threads)) * (i + 1)
-			);
-		}));
-
-		/* threadPool.back().join(); */
-	}
-
-	for(auto &thread : threadPool) {
-		thread.join();
-	}
-
-	return sum * 4;
-}
-
-/**
-* @brief Generuje pliki `.csv` benchmarkÛw dla obliczania liczby Pi z rÛønø liczbø wøtkÛw i iteracji.
-* 
-* @param minThreads Minimalna liczba wøtkÛw do uøycia w benchmarkach.
-* @param maxThreads Maksymalna liczba wøtkÛw do uøycia w benchmarkach.
-* @param minIter Minimalna liczba iteracji do uøycia w benchmarkach.
-* @param maxIter Maksymalna liczba iteracji do uøycia w benchmarkach.
-*
-* @note Benchmarki sø zapisywane do pliku `benchmark.csv`.
-*/
+/**                                                                                  
+* @brief Oblicza warto≈õƒá liczby Pi metodƒÖ przybli≈ºonej ca≈Çki u≈ºywajƒÖc okre≈õlonej liczby wƒÖtk√≥w i dok≈Çadno≈õci.     
+*                                                                                    
+* @param steps Liczba krok√≥w do u≈ºycia w obliczeniach, okre≈õla dok≈Çadno≈õƒá.                               
+* @param threads Liczba wƒÖtk√≥w do u≈ºycia w obliczeniach.                             
+* @return Obliczona warto≈õƒá liczby Pi lub -1 w przypadku b≈Çƒôdu.                      
+*/                                                                                   
+double getPi(const long steps, const size_t threads) {                               
+	long double deltax { 1. / steps };                                               
+                                                                                     
+	if(deltax > 1) {                                                                 
+		std::println("Rectangle width should be smaller than 1");                    
+		return -1;                                                                   
+	}                                                                                
+                                                                                     
+	if(threads == 0) {                                                               
+		std::println("Threads should be a non-zero value");                          
+		return -1;                                                                   
+	}                                                                                
+                                                                                     
+	double sum = 0.;                                                                 
+		                                                                             
+	auto calculate = [&](const long double start, const long double end) {           
+		long double localSum = 0.;                                                   
+		for(long double i {start}; i < end; i+= deltax) {                            
+			localSum += sqrt(1 - i * i) * deltax;                                    
+		}                                                                            
+                                                                                     
+		sum += localSum;                                                             
+	};                                                                               
+                                                                                     
+	std::vector<std::thread> threadPool;                                             
+	threadPool.reserve(threads);                                                     
+                                                                                     
+	for(int i = 0; i < threads; i++) {                                               
+		threadPool.push_back(std::thread([&, i] {                                    
+			calculate(                                                               
+				(1. / static_cast<double>(threads)) * i,                             
+				(1. / static_cast<double>(threads)) * (i + 1)                        
+			);                                                                       
+		}));                                                                         
+                                                                                     
+		/* threadPool.back().join(); */                                              
+	}                                                                                
+                                                                                     
+	for(auto &thread : threadPool) {                                                 
+		thread.join();                                                               
+	}                                                                                
+                                                                                     
+	return sum * 4;                                                                  
+}                                                                                    
+                                                                                     
+/**                                                                                  
+* @brief Generuje pliki `.csv` benchmark√≥w dla obliczania liczby Pi z r√≥≈ºnƒÖ liczbƒÖ wƒÖtk√≥w i iteracji.   
+*                                                                                    
+* @param minThreads Minimalna liczba wƒÖtk√≥w do u≈ºycia w benchmarkach.                
+* @param maxThreads Maksymalna liczba wƒÖtk√≥w do u≈ºycia w benchmarkach.               
+* @param minIter Minimalna liczba iteracji do u≈ºycia w benchmarkach.                 
+* @param maxIter Maksymalna liczba iteracji do u≈ºycia w benchmarkach.                
+*                                                                                    
+* @note Benchmarki sƒÖ zapisywane do pliku `benchmark.csv`.                           
+*/                                                                                   
 void generateBenchmarks(
 	const size_t minThreads,
 	const size_t maxThreads,
@@ -82,7 +82,7 @@ void generateBenchmarks(
 		return;
 	}
 
-	output << "Threads;Iterations;Calculated;Time[µs]" << std::endl;
+	output << "Threads;Iterations;Calculated;Time[¬µs]" << std::endl;
 
 	for(auto threads {minThreads}; threads <= maxThreads; threads++) {
 		size_t multiplier {10};
