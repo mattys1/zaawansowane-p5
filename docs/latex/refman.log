@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.13)  23 DEC 2024 12:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.13)  23 DEC 2024 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -952,7 +952,7 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 12085F48F2B76874061DEDF0B6D02138;1752.
+(rerunfilecheck)             Checksum: 9056905925A3E2C757A1BD135D6E93C0;1402.
  ) 
 Here is how much of TeX's memory you used:
  17785 strings out of 476041
@@ -961,7 +961,7 @@ Here is how much of TeX's memory you used:
  39551 multiletter control sequences out of 15000+600000
  612851 words of font info for 104 fonts, out of 8000000 for 9000
  34 hyphenation exceptions out of 8191
- 101i,14n,117p,607b,742s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,14n,117p,446b,742s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/urw/co
@@ -969,7 +969,7 @@ urier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></u
 sr/share/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-dist/
 fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (9 pages, 89762 bytes).
+Output written on refman.pdf (9 pages, 89212 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  129 compressed objects within 2 object streams

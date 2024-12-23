@@ -1,10 +1,5 @@
 \begin{theindex}
 
-  \item {/home/mattys/skrypty-\/i-\/syfy/studia/rok2/programowanie-\/zaawansowane/p5/src/main.cpp}, 
-		\hyperpage{3}
-
-  \indexspace
-
   \item {generateBenchmarks}
     \subitem {main.cpp}, \hyperpage{3}
   \item {getPi}
@@ -18,5 +13,9 @@
     \subitem {generateBenchmarks}, \hyperpage{3}
     \subitem {getPi}, \hyperpage{4}
     \subitem {main}, \hyperpage{4}
+
+  \indexspace
+
+  \item {src/main.cpp}, \hyperpage{3}
 
 \end{theindex}
