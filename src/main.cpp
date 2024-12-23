@@ -6,6 +6,13 @@
 #include <vector>
 #include <fstream>
 
+/**
+* @brief Oblicza warto¿¿ liczby Pi metod¿ przybli¿onej ca¿ki u¿ywaj¿c okre¿lonej liczby kroków i w¿tków.
+* 
+* @param steps Liczba kroków do u¿ycia w obliczeniach.
+* @param threads Liczba w¿tków do u¿ycia w obliczeniach.
+* @return Obliczona warto¿¿ liczby Pi lub -1 w przypadku b¿¿du.
+*/
 double getPi(const long steps, const size_t threads) {
 	long double deltax { 1. / steps };
 
@@ -51,6 +58,16 @@ double getPi(const long steps, const size_t threads) {
 	return sum * 4;
 }
 
+/**
+* @brief Generuje pliki `.csv` benchmarków dla obliczania liczby Pi z ró¿n¿ liczb¿ w¿tków i iteracji.
+* 
+* @param minThreads Minimalna liczba w¿tków do u¿ycia w benchmarkach.
+* @param maxThreads Maksymalna liczba w¿tków do u¿ycia w benchmarkach.
+* @param minIter Minimalna liczba iteracji do u¿ycia w benchmarkach.
+* @param maxIter Maksymalna liczba iteracji do u¿ycia w benchmarkach.
+*
+* @note Benchmarki s¿ zapisywane do pliku `benchmark.csv`.
+*/
 void generateBenchmarks(
 	const size_t minThreads,
 	const size_t maxThreads,
@@ -93,5 +110,5 @@ void generateBenchmarks(
 }
 
 int main(int argc, char *argv[]) {
-	generateBenchmarks(12, 50, 1, 1'000'000'000);
+	generateBenchmarks(1, 50, 1, 1'000'000'000);
 }
