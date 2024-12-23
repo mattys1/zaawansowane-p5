@@ -48,7 +48,6 @@ double getPi(const size_t steps, const size_t threads) {
 			);                                                                       
 		}));                                                                         
                                                                                      
-		/* threadPool.back().join(); */                                              
 	}                                                                                
                                                                                      
 	for(auto &thread : threadPool) {                                                 
