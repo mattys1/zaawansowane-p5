@@ -5,25 +5,11 @@
 %Napisać spsoób wykorzystania algorytmu po przez wykonanie przykładu (np. mnożenie macierzy - wykonać ręcznie przykład z mnożeniem macierzy pokazujący jak mnoży się macierz ręcznie)
 %Jeśli zadanie zakłada przedstawienie jakiegoś narzędzia (np. git, AI) należy opisać narzędzie
 
-\subsection{Macierz}
+\subsection{Algorytm obliczania $\pi$ metodą całkowania numerycznego}
 
-Macierz\cite{matrixwiki} jest dwu wymiarową tablicą elementów, reprezentującą odpowiednio ułożony zbiór wartości. Macierze często używane są w matematyce, fizyce i oczywiście informatyce, ze względu na fakt, że można na nich wykonywać różne operacje matematyczne. 
+Algorytm obliczania $\pi$ metodą całkowania numerycznego (połączenie metody Archimedesa\cite{archimedes} i sum Riemanna\cite{riemannwiki}) polega na wykorzystaniu wzoru na pole koła \[P = \pi r^2,\] Wzór ten można przekształcić do postaci \[\pi = \frac{P}{r^2},\] gdzie $P$ to pole koła, a $r$ to promień. Z tej relacji wynika, że można użyć wartości promienia i pola koła do obliczenia $\pi$. Jeżeli wiadomo jaki jest promień koła, do określenia pola pod łukiem ćwiartki okręgu i pomnożenia wyniku przez 4 (dlatego, że koło jest symetryczne względem osi $x$ i $y$ układu współrzędnych). Funkcję określająca kształt łuku ćwiartki można uzyskać poprzez przekształcenie wzoru okrąg \[x^2 + y^2 = r^2,\] gdzie $x$, $y$ to koordynaty punktów na okręgu, a $r$ to promień. Przekształcając wzór do postaci $f(x,r) \to y$ uzyskujemy \[y = \sqrt{r^2 - x^2},\] gdzie $y, x \geq 0$ (dlatego, że obliczana jest tylko ćwiartka). Pole pod tą funkcją to całka oznaczona \[P_{cw} = \int_{0}^{r} \sqrt{r^2 - x^2} \,dx.\] Pole całego koła to byłoby zatem \[P = 4P_{cw}.\]
 
-\begin{figure}[H]
-	\begin{center}
-		\[
-		\begin{bmatrix}
-		1 & 2 & 3 \\
-		4 & 5 & 6 \\
-		7 & 8 & 9
-		\end{bmatrix}
-		\]
-	\end{center}
-	\caption{Przykładowa macierz}
-	\label{fig:matrix_example}
-\end{figure}
-
-Na rys. \ref{fig:matrix_example} jest pokazana przykładowa macierz.
+Należy natomiast zauważyć, że nie da się obliczyć dokładnej wartości tej całki bez wykorzystania liczby $\pi$. Dlatego, należy skorzystać z sum Riemanna\cite{riemannwiki}, aby obliczyć aproksymację wartości $\pi$, poprzez podkładanie prostokątów z szerokością o danej wartości i wysokości określonej poprzez wartość funkcji $y = \sqrt{r^2 - x^2}$, gdzie $x$ to punkty oddzielone od siebie o daną szerokość.
 
 \subsection{Git}
 Kolejnym konceptem, którym zajmuje się projekt jest narzędzie git\cite{gitsite}. Pozwala ono zarządzać poszczególnymi wersjami projektów. Głównym korzeniem gita jest system commitów, czyli zapisania zmian w pliku w stosunku do commita starszego. To, w połączeniu z jego innymi możliwościami pozwala na tworzenie długich i skomplikowanych osi czasu danych projektów. 
